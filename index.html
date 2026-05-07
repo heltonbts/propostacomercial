@@ -895,6 +895,45 @@ max-width: 680px;
 </head>
 <body>
 
+<!-- NAV TABS -->
+<nav style="
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 20px;
+  background: rgba(8,8,8,0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,30,30,0.12);
+">
+  <a href="index.html" style="
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 8px 24px;
+    border-radius: 3px;
+    background: rgba(255,30,30,0.12);
+    color: #ff3333;
+    border: 1px solid rgba(255,30,30,0.35);
+  ">Proposta Completa</a>
+  <a href="propostasimples.html" style="
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 8px 24px;
+    border-radius: 3px;
+    color: #888;
+    border: 1px solid rgba(255,255,255,0.08);
+  ">Proposta Simples</a>
+</nav>
+<div style="height: 52px;"></div>
+
 <!-- HERO -->
 
 <section class="hero">
