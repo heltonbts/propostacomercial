@@ -223,10 +223,10 @@ border: 1px solid rgba(255,255,255,0.06);
 border-radius: 6px;
 overflow: hidden;
 position: relative;
-transition: transform 0.3s;
+transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.fmt:hover { transform: translateY(-4px); }
+.fmt:hover { transform: translateY(-6px); box-shadow: 0 8px 32px rgba(255,30,30,0.10); }
 
 .fmt-bar { height: 4px; }
 .fmt-a .fmt-bar { background: linear-gradient(90deg, #4a0000, #8b0000); }
@@ -566,10 +566,75 @@ letter-spacing: 2px;
 .closing { padding: 40px 24px; }
 .container { padding: 0 20px; }
 }
+
+/* ── SCAN LINE ── */
+@keyframes scanLine {
+  0%   { top: -4px; opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 1; }
+  100% { top: 100vh; opacity: 0; }
+}
+.scan-line {
+  position: fixed;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,30,30,0.5) 30%, rgba(255,80,80,0.8) 50%, rgba(255,30,30,0.5) 70%, transparent 100%);
+  box-shadow: 0 0 12px rgba(255,30,30,0.4), 0 0 30px rgba(255,30,30,0.15);
+  z-index: 0;
+  pointer-events: none;
+  animation: scanLine 10s linear infinite;
+}
+
+/* ── FORMATO B FEATURED ── */
+.fmt-b.featured {
+  border-color: rgba(255,30,30,0.35);
+  box-shadow: 0 0 40px rgba(255,30,30,0.08);
+}
+.fmt-b.featured:hover {
+  box-shadow: 0 8px 48px rgba(255,30,30,0.20);
+}
+.fmt-featured-tag {
+  position: absolute;
+  top: 14px; right: 14px;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #080808;
+  background: #cc2222;
+  padding: 4px 10px;
+  border-radius: 2px;
+  font-weight: 700;
+}
+
+/* ── "NÃO INCLUI" BLOCK ── */
+.fmt-not-included {
+  background: rgba(0,0,0,0.22);
+  border-radius: 4px;
+  padding: 2px 12px 10px;
+  margin-top: 8px;
+  border-left: 2px solid rgba(255,255,255,0.05);
+}
+.fmt-not-included .fmt-section { color: rgba(136,136,136,0.6); margin-top: 10px; }
+.fmt-not-included .fmt-list { margin-bottom: 0; }
+.fmt-not-included .fmt-list li { color: rgba(136,136,136,0.55); }
+.fmt-not-included .fmt-list li::before { color: rgba(255,255,255,0.15); content: '–'; }
+
+/* ── EVOLUTION PLANS LEVELS ── */
+.evo-plan-1 { border-color: rgba(139,0,0,0.28); background: rgba(139,0,0,0.05); }
+.evo-plan-2 { border-color: rgba(204,34,34,0.38); background: rgba(204,34,34,0.07); }
+.evo-plan-3 { border-color: rgba(255,68,68,0.48); background: rgba(255,68,68,0.09); box-shadow: 0 0 20px rgba(255,68,68,0.06); }
+.evo-plan-3 .evo-plan-price { color: #ff4444; }
+
+/* ── TABLE ICONS ── */
+.t-check { color: #33cc66; font-size: 15px; }
+.t-cross { color: rgba(255,60,60,0.55); font-size: 15px; }
+.t-partial { color: #ff9933; font-size: 13px; font-family: 'Space Mono', monospace; }
 </style>
 
 </head>
 <body>
+
+<div class="scan-line"></div>
 
 <!-- NAV TABS -->
 <nav style="
@@ -668,12 +733,14 @@ letter-spacing: 2px;
         <li>Entrega pronta para publicar</li>
       </ul>
 
-      <div class="fmt-section">// o que não inclui</div>
-      <ul class="fmt-list">
-        <li>Roteiro ou planejamento de conteúdo</li>
-        <li>Captação ou presença na gravação</li>
-        <li>Direção de cena</li>
-      </ul>
+      <div class="fmt-not-included">
+        <div class="fmt-section">// o que não inclui</div>
+        <ul class="fmt-list">
+          <li>Roteiro ou planejamento de conteúdo</li>
+          <li>Captação ou presença na gravação</li>
+          <li>Direção de cena</li>
+        </ul>
+      </div>
 
       <div class="fmt-deadline">⏱ Entrega em 2 a 3 dias por vídeo</div>
       <div class="fmt-note">Ideal para quem já tem alguém gravando e precisa de edição profissional para elevar a qualidade do que já produz.</div>
@@ -681,8 +748,9 @@ letter-spacing: 2px;
   </div>
 
   <!-- FORMATO B -->
-  <div class="fmt fmt-b">
+  <div class="fmt fmt-b featured">
     <div class="fmt-bar"></div>
+    <div class="fmt-featured-tag">RECOMENDADO</div>
     <div class="fmt-body">
       <div class="fmt-number">FORMATO B</div>
       <div class="fmt-name">PRODUÇÃO SEM PLANEJAMENTO</div>
@@ -705,12 +773,14 @@ letter-spacing: 2px;
         <li>Entrega em 2 a 3 dias após a captação</li>
       </ul>
 
-      <div class="fmt-section">// o que não inclui</div>
-      <ul class="fmt-list">
-        <li>Calendário editorial mensal</li>
-        <li>Planejamento estratégico por pilares</li>
-        <li>Acompanhamento de resultados</li>
-      </ul>
+      <div class="fmt-not-included">
+        <div class="fmt-section">// o que não inclui</div>
+        <ul class="fmt-list">
+          <li>Calendário editorial mensal</li>
+          <li>Planejamento estratégico por pilares</li>
+          <li>Acompanhamento de resultados</li>
+        </ul>
+      </div>
 
       <div class="fmt-deadline">⏱ Entrega em 2 a 3 dias após a captação</div>
       <div class="fmt-note">Para quem quer produção completa sem a estrutura de um plano mensal. Os temas são definidos em conjunto antes de cada diária.</div>
@@ -741,12 +811,14 @@ letter-spacing: 2px;
         <li>Entrega em 2 a 3 dias após a gravação</li>
       </ul>
 
-      <div class="fmt-section">// o que não inclui</div>
-      <ul class="fmt-list">
-        <li>Roteiro ou criação de conteúdo</li>
-        <li>Planejamento estratégico ou calendário</li>
-        <li>Definição de temas ou narrativa</li>
-      </ul>
+      <div class="fmt-not-included">
+        <div class="fmt-section">// o que não inclui</div>
+        <ul class="fmt-list">
+          <li>Roteiro ou criação de conteúdo</li>
+          <li>Planejamento estratégico ou calendário</li>
+          <li>Definição de temas ou narrativa</li>
+        </ul>
+      </div>
 
       <div class="fmt-deadline">⏱ Entrega em 2 a 3 dias após a gravação</div>
       <div class="fmt-note">Para quem já tem criatividade e ideia, mas quer que o resultado final tenha qualidade técnica e edição profissional.</div>
@@ -773,25 +845,25 @@ letter-spacing: 2px;
       <tr>
         <td><span class="t-name t-a">SÓ EDIÇÃO</span></td>
         <td>4</td>
-        <td>Não</td>
-        <td>Cliente</td>
-        <td>Não</td>
+        <td><span class="t-cross">✗</span></td>
+        <td><span class="t-cross">✗</span> <small>Cliente</small></td>
+        <td><span class="t-cross">✗</span></td>
         <td class="t-price" style="color:#aa2222">R$ 600/mês</td>
       </tr>
       <tr>
         <td><span class="t-name t-b">SEM PLANEJAMENTO</span></td>
         <td>4</td>
-        <td>Sim</td>
-        <td>Inclusa (3h)</td>
-        <td>Não</td>
+        <td><span class="t-check">✓</span></td>
+        <td><span class="t-check">✓</span> <small>3h inclusa</small></td>
+        <td><span class="t-cross">✗</span></td>
         <td class="t-price" style="color:#cc3333">R$ 1.200/mês</td>
       </tr>
       <tr>
         <td><span class="t-name t-c">CLIENTE CRIA</span></td>
         <td>4</td>
-        <td>Não</td>
-        <td>Orientação</td>
-        <td>Não</td>
+        <td><span class="t-cross">✗</span></td>
+        <td><span class="t-partial">~</span> <small>Orientação</small></td>
+        <td><span class="t-cross">✗</span></td>
         <td class="t-price" style="color:#ff4444">R$ 900/mês</td>
       </tr>
     </tbody>
@@ -817,17 +889,17 @@ letter-spacing: 2px;
     Além da produção, incluem <strong>planejamento estratégico mensal, calendário editorial, pilares de comunicação, roteiro com construção narrativa</strong> e acompanhamento de resultados. Cada formato foi desenvolvido especificamente para o posicionamento da Infoplay com a Geração Z.
   </div>
   <div class="evolution-plans">
-    <div class="evo-plan">
+    <div class="evo-plan evo-plan-1">
       <div class="evo-plan-name">BASE ESSENCIAL</div>
       <div class="evo-plan-price">R$ 1.900/mês</div>
       <div class="evo-plan-desc">6 conteúdos por mês com planejamento, roteiro com narrativa objetiva, captação dirigida e identidade visual no feed.</div>
     </div>
-    <div class="evo-plan">
+    <div class="evo-plan evo-plan-2">
       <div class="evo-plan-name">POSICIONAMENTO</div>
       <div class="evo-plan-price">R$ 3.200/mês</div>
       <div class="evo-plan-desc">10 conteúdos por mês com estratégia por pilares, roteiro com construção narrativa elaborada e acompanhamento mensal.</div>
     </div>
-    <div class="evo-plan">
+    <div class="evo-plan evo-plan-3">
       <div class="evo-plan-name">CRESCIMENTO</div>
       <div class="evo-plan-price">R$ 4.200/mês</div>
       <div class="evo-plan-desc">12 conteúdos por mês com storytelling, 2 diárias de captação, edição refinada e acompanhamento contínuo.</div>
