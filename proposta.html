@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Comercial — Infoplay</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --neon-cyan: #ff1a1a;
+    --neon-green: #ff3333;
+    --neon-purple: #cc0000;
+    --neon-orange: #ff4444;
+    --dark-bg: #080808;
+    --dark-card: #111111;
+    --dark-card2: #161616;
+    --grid-line: rgba(255,30,30,0.07);
+    --text-primary: #f5f5f5;
+    --text-muted: #888888;
+    --border-glow: rgba(255,30,30,0.3);
+  }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+@media print {
+* { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+body::before, body::after { display: none; }
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+background-color: var(--dark-bg);
+color: var(--text-primary);
+font-family: ‘Rajdhani’, sans-serif;
+font-weight: 400;
+overflow-x: hidden;
+line-height: 1.6;
+}
+
+/* Grid background */
+body::before {
+content: ‘’;
+position: fixed;
+inset: 0;
+background-image:
+linear-gradient(var(--grid-line) 1px, transparent 1px),
+linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+background-size: 60px 60px;
+pointer-events: none;
+z-index: 0;
+}
+
+/* Scanline overlay */
+body::after {
+content: ‘’;
+position: fixed;
+inset: 0;
+background: repeating-linear-gradient(
+0deg,
+transparent,
+transparent 2px,
+rgba(0,0,0,0.03) 2px,
+rgba(0,0,0,0.03) 4px
+);
+pointer-events: none;
+z-index: 0;
+}
+
+.container { max-width: 960px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
+
+/* ───── HERO ───── */
+.hero {
+min-height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+text-align: center;
+padding: 80px 32px;
+}
+
+.hero-glow {
+position: absolute;
+width: 700px;
+height: 700px;
+border-radius: 50%;
+background: radial-gradient(circle, rgba(255,30,30,0.10) 0%, transparent 70%);
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+pointer-events: none;
+}
+
+.hero-glow2 {
+position: absolute;
+width: 500px;
+height: 500px;
+border-radius: 50%;
+background: radial-gradient(circle, rgba(180,0,0,0.07) 0%, transparent 70%);
+top: 30%;
+right: 10%;
+pointer-events: none;
+}
+
+.badge {
+display: inline-block;
+font-family: ‘Space Mono’, monospace;
+font-size: 11px;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: var(--neon-cyan);
+border: 1px solid rgba(0,245,255,0.4);
+padding: 6px 18px;
+border-radius: 2px;
+margin-bottom: 32px;
+position: relative;
+}
+
+.badge::before {
+content: ‘’;
+position: absolute;
+left: -1px; top: -1px; right: -1px; bottom: -1px;
+border-radius: 2px;
+box-shadow: 0 0 12px rgba(255,30,30,0.2);
+}
+
+.hero-eyebrow {
+font-family: ‘Space Mono’, monospace;
+font-size: 12px;
+letter-spacing: 4px;
+color: var(--text-muted);
+text-transform: uppercase;
+margin-bottom: 20px;
+}
+
+.hero-title {
+font-family: ‘Orbitron’, monospace;
+font-weight: 900;
+font-size: clamp(38px, 7vw, 72px);
+line-height: 1.05;
+letter-spacing: -1px;
+margin-bottom: 16px;
+}
+
+.hero-title .line1 { color: var(--text-primary); }
+.hero-title .line2 {
+background: linear-gradient(90deg, #ff1a1a, #ff6666);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.hero-sub {
+font-size: 20px;
+font-weight: 500;
+color: var(--text-muted);
+max-width: 580px;
+margin: 0 auto 48px;
+letter-spacing: 0.5px;
+}
+
+.hero-sub span { color: var(--neon-cyan); }
+
+.hero-tagline {
+font-family: ‘Space Mono’, monospace;
+font-size: 13px;
+color: var(--neon-green);
+letter-spacing: 2px;
+padding: 12px 24px;
+border-left: 3px solid var(--neon-green);
+text-align: left;
+display: inline-block;
+background: rgba(255,30,30,0.05);
+}
+
+.scroll-hint {
+position: absolute;
+bottom: 40px;
+left: 50%;
+transform: translateX(-50%);
+font-family: ‘Space Mono’, monospace;
+font-size: 10px;
+letter-spacing: 3px;
+color: var(--text-muted);
+animation: pulse 2s infinite;
+}
+
+@keyframes pulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+/* ───── SECTIONS ───── */
+section { padding: 100px 0; }
+
+.section-label {
+font-family: ‘Space Mono’, monospace;
+font-size: 10px;
+letter-spacing: 5px;
+color: var(--neon-cyan);
+text-transform: uppercase;
+margin-bottom: 12px;
+display: flex;
+align-items: center;
+gap: 12px;
+}
+
+.section-label::after {
+content: ‘’;
+flex: 1;
+height: 1px;
+background: linear-gradient(90deg, rgba(0,245,255,0.3), transparent);
+}
+
+.section-title {
+font-family: ‘Orbitron’, monospace;
+font-weight: 700;
+font-size: clamp(24px, 4vw, 40px);
+margin-bottom: 16px;
+}
+
+.section-desc {
+font-size: 17px;
+color: var(--text-muted);
+max-width: 560px;
+margin-bottom: 60px;
+font-weight: 500;
+}
+
+/* ───── COMO FUNCIONA ───── */
+.funnel-row {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+gap: 2px;
+margin-bottom: 60px;
+}
+
+.funnel-item {
+background: var(--dark-card);
+padding: 36px 28px;
+position: relative;
+border: 1px solid rgba(255,255,255,0.05);
+transition: border-color 0.3s;
+}
+
+.funnel-item:hover { border-color: rgba(0,245,255,0.2); }
+
+.funnel-item:first-child { border-radius: 4px 0 0 4px; }
+.funnel-item:last-child { border-radius: 0 4px 4px 0; }
+
+.funnel-format {
+font-family: ‘Orbitron’, monospace;
+font-size: 11px;
+letter-spacing: 3px;
+margin-bottom: 8px;
+}
+
+.f-reel { color: var(--neon-cyan); }
+.f-carousel { color: var(--neon-purple); }
+.f-stories { color: var(--neon-green); }
+
+.funnel-name {
+font-family: ‘Orbitron’, monospace;
+font-size: 22px;
+font-weight: 700;
+margin-bottom: 6px;
+color: var(--text-primary);
+}
+
+.funnel-role {
+font-size: 13px;
+font-family: ‘Space Mono’, monospace;
+margin-bottom: 20px;
+}
+
+.funnel-desc { font-size: 15px; color: var(--text-muted); margin-bottom: 20px; }
+
+.funnel-items { list-style: none; }
+.funnel-items li {
+font-size: 14px;
+color: var(--text-muted);
+padding: 5px 0;
+border-bottom: 1px solid rgba(255,255,255,0.04);
+padding-left: 14px;
+position: relative;
+}
+.funnel-items li::before {
+content: ‘›’;
+position: absolute;
+left: 0;
+color: var(--neon-cyan);
+}
+
+.funnel-arrow {
+text-align: center;
+font-family: ‘Orbitron’, monospace;
+font-size: 13px;
+letter-spacing: 3px;
+color: var(--text-muted);
+margin: 40px 0;
+}
+
+.funnel-arrow span { color: var(--neon-cyan); }
+
+.funnel-conclusion {
+background: linear-gradient(135deg, rgba(255,30,30,0.07), rgba(180,0,0,0.05));
+border: 1px solid rgba(255,30,30,0.18);
+border-radius: 4px;
+padding: 28px 36px;
+text-align: center;
+}
+
+.funnel-conclusion p {
+font-family: ‘Rajdhani’, sans-serif;
+font-size: 19px;
+font-weight: 600;
+color: var(--text-primary);
+max-width: 600px;
+margin: 0 auto;
+}
+
+.funnel-conclusion p strong { color: var(--neon-cyan); }
+
+/* ───── PACKAGES ───── */
+.packages { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+
+.pkg {
+background: var(--dark-card);
+border: 1px solid rgba(255,255,255,0.06);
+border-radius: 6px;
+overflow: hidden;
+position: relative;
+transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pkg:hover {
+transform: translateY(-4px);
+}
+
+.pkg1.featured {
+border-color: rgba(180,0,0,0.35);
+box-shadow: 0 0 40px rgba(180,0,0,0.08);
+}
+
+.pkg1.featured:hover {
+box-shadow: 0 0 60px rgba(180,0,0,0.15);
+}
+
+.pkg-top-bar {
+height: 4px;
+}
+
+.pkg1 .pkg-top-bar { background: linear-gradient(90deg, #8b0000, #cc2222); }
+.pkg2 .pkg-top-bar { background: linear-gradient(90deg, #ff1a1a, #ff6666); }
+.pkg3 .pkg-top-bar { background: linear-gradient(90deg, #ff3333, #ffffff); }
+
+.pkg-body { padding: 32px 28px; }
+
+.pkg-number {
+font-family: ‘Space Mono’, monospace;
+font-size: 10px;
+letter-spacing: 4px;
+color: var(--text-muted);
+margin-bottom: 8px;
+}
+
+.pkg-name {
+font-family: ‘Orbitron’, monospace;
+font-weight: 900;
+font-size: 20px;
+margin-bottom: 4px;
+}
+
+.pkg1 .pkg-name { color: var(--neon-green); }
+.pkg2 .pkg-name { color: var(--neon-cyan); }
+.pkg3 .pkg-name { color: var(--neon-orange); }
+
+.pkg-tagline {
+font-size: 13px;
+color: var(--text-muted);
+margin-bottom: 24px;
+font-style: italic;
+}
+
+.pkg-price {
+margin-bottom: 28px;
+padding-bottom: 24px;
+border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.pkg-price .from {
+font-family: ‘Space Mono’, monospace;
+font-size: 10px;
+letter-spacing: 2px;
+color: var(--text-muted);
+display: block;
+margin-bottom: 4px;
+}
+
+.pkg-price .amount {
+font-family: ‘Orbitron’, monospace;
+font-weight: 900;
+font-size: 32px;
+color: var(--text-primary);
+}
+
+.pkg-price .period {
+font-size: 14px;
+color: var(--text-muted);
+font-family: ‘Space Mono’, monospace;
+}
+
+.pkg-section-title {
+font-family: ‘Space Mono’, monospace;
+font-size: 9px;
+letter-spacing: 4px;
+color: var(--text-muted);
+text-transform: uppercase;
+margin: 20px 0 10px;
+}
+
+.pkg-deliveries { list-style: none; margin-bottom: 16px; }
+.pkg-deliveries li {
+font-size: 14px;
+color: var(--text-muted);
+padding: 6px 0;
+display: flex;
+align-items: flex-start;
+gap: 8px;
+border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.pkg-deliveries li .dot {
+width: 6px;
+height: 6px;
+border-radius: 50%;
+margin-top: 6px;
+flex-shrink: 0;
+}
+
+.pkg1 .dot { background: var(--neon-green); }
+.pkg2 .dot { background: var(--neon-cyan); }
+.pkg3 .dot { background: var(--neon-orange); }
+
+.pkg-highlight {
+font-size: 14px;
+font-weight: 600;
+padding: 10px 14px;
+border-radius: 3px;
+margin-top: 12px;
+display: flex;
+align-items: center;
+gap: 8px;
+}
+
+.pkg1 .pkg-highlight { background: rgba(139,0,0,0.12); color: #cc2222; border-left: 3px solid #8b0000; }
+.pkg2 .pkg-highlight { background: rgba(255,30,30,0.10); color: #ff3333; border-left: 3px solid #ff1a1a; }
+.pkg3 .pkg-highlight { background: rgba(255,80,80,0.10); color: #ff6666; border-left: 3px solid #ff4444; }
+
+.pkg-differentials { margin-top: 20px; }
+.pkg-differentials p {
+font-size: 13px;
+color: var(--text-muted);
+padding: 5px 0;
+display: flex;
+align-items: center;
+gap: 8px;
+}
+.pkg-differentials p::before { content: ‘✦’; font-size: 10px; }
+.pkg1 .pkg-differentials p::before { color: var(--neon-green); }
+.pkg2 .pkg-differentials p::before { color: var(--neon-cyan); }
+.pkg3 .pkg-differentials p::before { color: var(--neon-orange); }
+
+.featured-tag {
+position: absolute;
+top: 16px;
+right: 16px;
+font-family: ‘Space Mono’, monospace;
+font-size: 9px;
+letter-spacing: 2px;
+color: var(--dark-bg);
+background: var(--neon-cyan);
+padding: 4px 10px;
+border-radius: 2px;
+font-weight: 700;
+}
+
+/* ───── SUMMARY TABLE ───── */
+.summary-table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 40px;
+font-family: ‘Rajdhani’, sans-serif;
+}
+
+.summary-table th {
+font-family: ‘Space Mono’, monospace;
+font-size: 10px;
+letter-spacing: 3px;
+color: var(--text-muted);
+text-align: left;
+padding: 12px 20px;
+border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.summary-table td {
+padding: 14px 20px;
+font-size: 15px;
+border-bottom: 1px solid rgba(255,255,255,0.04);
+font-weight: 500;
+}
+
+.summary-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+.t-pkg { font-family: ‘Orbitron’, monospace; font-size: 13px; font-weight: 700; }
+.t-pkg1 { color: var(--neon-green); }
+.t-pkg2 { color: var(--neon-cyan); }
+.t-pkg3 { color: var(--neon-orange); }
+
+.t-price { font-family: ‘Space Mono’, monospace; font-size: 15px; }
+
+/* ───── LIMITS ───── */
+.limits-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 16px;
+margin-top: 40px;
+}
+
+.limit-item {
+background: var(--dark-card);
+border: 1px solid rgba(255,30,30,0.18);
+border-radius: 4px;
+padding: 20px 24px;
+display: flex;
+gap: 14px;
+align-items: flex-start;
+}
+
+.limit-icon {
+font-size: 20px;
+flex-shrink: 0;
+margin-top: 2px;
+}
+
+.limit-title {
+font-family: ‘Orbitron’, monospace;
+font-size: 12px;
+font-weight: 700;
+color: var(--neon-orange);
+letter-spacing: 1px;
+margin-bottom: 4px;
+}
+
+.limit-desc { font-size: 14px; color: var(--text-muted); }
+
+/* ───── CLOSING ───── */
+.closing {
+background: linear-gradient(135deg, var(--dark-card) 0%, var(--dark-card2) 100%);
+border: 1px solid rgba(255,30,30,0.18);
+border-radius: 8px;
+padding: 64px 48px;
+text-align: center;
+position: relative;
+overflow: hidden;
+}
+
+.closing::before {
+content: ‘’;
+position: absolute;
+width: 400px;
+height: 400px;
+border-radius: 50%;
+background: radial-gradient(circle, rgba(255,30,30,0.08) 0%, transparent 70%);
+top: -100px;
+left: -100px;
+}
+
+.closing::after {
+content: ‘’;
+position: absolute;
+width: 300px;
+height: 300px;
+border-radius: 50%;
+background: radial-gradient(circle, rgba(180,0,0,0.06) 0%, transparent 70%);
+bottom: -80px;
+right: -80px;
+}
+
+.closing-quote {
+font-family: ‘Rajdhani’, sans-serif;
+font-size: clamp(18px, 3vw, 26px);
+font-weight: 600;
+color: var(--text-primary);
+line-height: 1.5;
+max-width: 680px;
+margin: 0 auto 32px;
+position: relative;
+z-index: 1;
+}
+
+.closing-quote::before {
+content: ‘”’;
+font-family: ‘Orbitron’, monospace;
+font-size: 60px;
+color: rgba(255,30,30,0.2);
+display: block;
+line-height: 1;
+margin-bottom: 8px;
+}
+
+.closing-divider {
+width: 60px;
+height: 2px;
+background: linear-gradient(90deg, #8b0000, #ff3333);
+margin: 0 auto 32px;
+}
+
+.closing-final {
+font-family: ‘Space Mono’, monospace;
+font-size: 13px;
+color: var(--neon-cyan);
+letter-spacing: 2px;
+position: relative;
+z-index: 1;
+}
+
+/* ───── FOOTER ───── */
+footer {
+padding: 40px 0;
+text-align: center;
+border-top: 1px solid rgba(255,255,255,0.05);
+position: relative;
+z-index: 1;
+}
+
+.footer-brand {
+font-family: ‘Orbitron’, monospace;
+font-weight: 900;
+font-size: 22px;
+letter-spacing: 4px;
+background: linear-gradient(90deg, #ff1a1a, #ff6666);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+margin-bottom: 8px;
+}
+
+footer p {
+font-family: ‘Space Mono’, monospace;
+font-size: 11px;
+color: var(--text-muted);
+letter-spacing: 2px;
+}
+
+/* ───── DIVIDER ───── */
+.h-divider {
+border: none;
+height: 1px;
+background: linear-gradient(90deg, transparent, rgba(0,245,255,0.2), transparent);
+margin: 0;
+}
+
+/* ───── ANIMATIONS ───── */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up { animation: fadeUp 0.8s ease forwards; }
+.fade-up-d1 { animation-delay: 0.1s; opacity: 0; animation-fill-mode: both; }
+.fade-up-d2 { animation-delay: 0.25s; opacity: 0; animation-fill-mode: both; }
+.fade-up-d3 { animation-delay: 0.4s; opacity: 0; animation-fill-mode: both; }
+.fade-up-d4 { animation-delay: 0.55s; opacity: 0; animation-fill-mode: both; }
+
+/* ───── MODULAR ───── */
+.modular-grid {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+gap: 20px;
+margin-top: 40px;
+}
+
+.modular-item {
+background: var(--dark-card);
+border: 1px solid rgba(255,255,255,0.06);
+border-radius: 6px;
+padding: 28px 24px;
+}
+
+.modular-item.modular-featured {
+border-color: rgba(255,30,30,0.25);
+box-shadow: 0 0 30px rgba(255,30,30,0.06);
+}
+
+.modular-header {
+display: flex;
+align-items: flex-start;
+gap: 14px;
+margin-bottom: 16px;
+}
+
+.modular-icon { font-size: 26px; flex-shrink: 0; }
+
+.modular-name {
+font-family: ‘Orbitron’, monospace;
+font-weight: 700;
+font-size: 13px;
+color: var(--text-primary);
+margin-bottom: 5px;
+letter-spacing: 0.5px;
+}
+
+.modular-price {
+font-family: ‘Orbitron’, monospace;
+font-weight: 900;
+font-size: 22px;
+color: #ff3333;
+}
+
+.modular-price span {
+font-family: ‘Space Mono’, monospace;
+font-size: 10px;
+color: var(--text-muted);
+font-weight: 400;
+}
+
+.modular-desc {
+font-size: 14px;
+color: var(--text-muted);
+margin-bottom: 12px;
+line-height: 1.65;
+}
+
+.modular-deadline {
+font-family: ‘Space Mono’, monospace;
+font-size: 11px;
+color: #ff3333;
+letter-spacing: 1px;
+margin-bottom: 16px;
+padding: 8px 12px;
+background: rgba(255,30,30,0.05);
+border-radius: 3px;
+border-left: 3px solid #ff3333;
+}
+
+.modular-list { list-style: none; }
+.modular-list li {
+font-size: 13px;
+color: var(--text-muted);
+padding: 5px 0 5px 14px;
+border-bottom: 1px solid rgba(255,255,255,0.03);
+position: relative;
+}
+.modular-list li::before { content: ‘›’; position: absolute; left: 0; color: #ff3333; }
+
+.modular-note {
+margin-top: 28px;
+font-family: ‘Space Mono’, monospace;
+font-size: 11px;
+color: var(--text-muted);
+letter-spacing: 0.5px;
+padding: 16px 20px;
+border: 1px solid rgba(255,255,255,0.05);
+border-radius: 4px;
+line-height: 1.8;
+}
+
+/* ───── PROCESS ───── */
+.process-steps { margin-top: 40px; }
+
+.process-step {
+display: flex;
+gap: 32px;
+align-items: flex-start;
+padding: 28px 0;
+border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.process-step:last-child { border-bottom: none; }
+
+.step-number {
+font-family: ‘Orbitron’, monospace;
+font-weight: 900;
+font-size: 34px;
+color: rgba(255,30,30,0.2);
+line-height: 1;
+flex-shrink: 0;
+width: 52px;
+text-align: right;
+}
+
+.step-title {
+font-family: ‘Orbitron’, monospace;
+font-weight: 700;
+font-size: 13px;
+color: var(--text-primary);
+margin-bottom: 4px;
+letter-spacing: 1px;
+}
+
+.step-deadline {
+font-family: ‘Space Mono’, monospace;
+font-size: 11px;
+color: #ff3333;
+letter-spacing: 1px;
+margin-bottom: 10px;
+}
+
+.step-desc {
+font-size: 15px;
+color: var(--text-muted);
+line-height: 1.65;
+}
+
+/* ───── DIAGNOSTIC ───── */
+.diagnostic-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 16px;
+margin-top: 40px;
+}
+
+.diag-item {
+background: var(--dark-card);
+border: 1px solid rgba(255,255,255,0.06);
+border-radius: 6px;
+padding: 24px 24px;
+position: relative;
+overflow: hidden;
+}
+
+.diag-item::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 3px;
+background: linear-gradient(90deg, #cc0000, #ff3333);
+}
+
+.diag-icon { font-size: 22px; margin-bottom: 10px; }
+
+.diag-title {
+font-family: ‘Orbitron’, monospace;
+font-size: 12px;
+font-weight: 700;
+color: var(--text-primary);
+letter-spacing: 1px;
+margin-bottom: 8px;
+}
+
+.diag-text {
+font-size: 14px;
+color: var(--text-muted);
+line-height: 1.65;
+}
+
+.diag-highlight {
+font-size: 14px;
+color: #ff3333;
+font-weight: 600;
+margin-top: 8px;
+}
+
+.diagnostic-conclusion {
+margin-top: 28px;
+background: linear-gradient(135deg, rgba(255,30,30,0.07), rgba(180,0,0,0.04));
+border: 1px solid rgba(255,30,30,0.18);
+border-radius: 4px;
+padding: 28px 32px;
+}
+
+.diagnostic-conclusion p {
+font-size: 17px;
+font-weight: 600;
+color: var(--text-primary);
+line-height: 1.65;
+max-width: 680px;
+}
+
+.diagnostic-conclusion p span { color: #ff3333; }
+
+/* ───── RESPONSIVE ───── */
+@media (max-width: 768px) {
+.packages { grid-template-columns: 1fr; }
+.funnel-row { grid-template-columns: 1fr; }
+.limits-grid { grid-template-columns: 1fr; }
+.modular-grid { grid-template-columns: 1fr; }
+.diagnostic-grid { grid-template-columns: 1fr; }
+.closing { padding: 40px 24px; }
+.container { padding: 0 20px; }
+.step-number { font-size: 24px; width: 36px; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div style="position:relative; z-index:2;">
+    <div class="badge fade-up fade-up-d1">Proposta Comercial · Infoplay · 2026</div>
+    <p class="hero-eyebrow fade-up fade-up-d2">Direção de Conteúdo · Posicionamento Gamer · Geração Z</p>
+    <h1 class="hero-title fade-up fade-up-d3">
+      <span class="line1">DE REFERÊNCIA</span><br>
+      <span class="line2">A LEGADO</span>
+    </h1>
+    <p class="hero-sub fade-up fade-up-d4">
+      A <span>Infoplay</span> já é reconhecida na região. O próximo passo é fazer o Instagram comunicar o que a loja já é: especialista, confiável e referência gamer no Ceará.
+    </p>
+    <div class="hero-tagline fade-up fade-up-d4">
+      Organização &nbsp;·&nbsp; Posicionamento &nbsp;·&nbsp; Construção de legado
+    </div>
+  </div>
+  <div class="scroll-hint">↓ &nbsp; SCROLL &nbsp; ↓</div>
+</section>
+
+<hr class="h-divider">
+
+<!-- DIAGNÓSTICO -->
+
+<section>
+  <div class="container">
+    <div class="section-label">Diagnóstico</div>
+    <h2 class="section-title">O que ficou claro<br>na nossa conversa</h2>
+    <p class="section-desc">Antes de apresentar qualquer proposta, o primeiro passo foi entender o negócio. O que está abaixo é o que identifiquei sobre a Infoplay: o que já funciona bem e onde o conteúdo ainda pode trabalhar mais.</p>
+
+<div class="diagnostic-grid">
+
+  <div class="diag-item">
+    <div class="diag-icon">🏆</div>
+    <div class="diag-title">Referência regional consolidada</div>
+    <div class="diag-text">A Infoplay já envia equipamentos para Fortaleza e é reconhecida como referência gamer na região. Essa autoridade existe no mercado, mas ainda não aparece com a mesma força no Instagram.</div>
+    <div class="diag-highlight">Autoridade construída no mercado, ainda pouco visível no digital.</div>
+  </div>
+
+  <div class="diag-item">
+    <div class="diag-icon">⚡</div>
+    <div class="diag-title">O diferencial das 48 horas</div>
+    <div class="diag-text">Resolver em até 48 horas é um argumento que muda a conversa com qualquer cliente que pesquisa preço na internet. Quem já teve problema sabe o valor disso. Quem ainda não comprou precisa saber antes de decidir.</div>
+    <div class="diag-highlight">Diferencial forte, ainda pouco comunicado.</div>
+  </div>
+
+  <div class="diag-item">
+    <div class="diag-icon">🎮</div>
+    <div class="diag-title">Console como oportunidade a explorar</div>
+    <div class="diag-text">Você apontou o serviço de console como carro-chefe em potencial, mas ele ainda não tem presença proporcional no conteúdo. É um produto com alto apelo visual e forte conexão com a Geração Z, o exato público que a Infoplay quer alcançar.</div>
+    <div class="diag-highlight">Produto com apelo claro. Conteúdo ainda a desenvolver.</div>
+  </div>
+
+  <div class="diag-item">
+    <div class="diag-icon">👥</div>
+    <div class="diag-title">Público: Geração Z</div>
+    <div class="diag-text">Você deixou claro que quer atrair a Geração Z, um público que compra por identificação, confiança e experiência, não pelo menor preço. Para esse público, a linguagem, o rosto e a personalidade da marca pesam tanto quanto o produto.</div>
+    <div class="diag-highlight">Público definido. Linguagem ainda a construir.</div>
+  </div>
+
+  <div class="diag-item">
+    <div class="diag-icon">🎯</div>
+    <div class="diag-title">Clientes que chegam por indicação</div>
+    <div class="diag-text">Grande parte do movimento da loja vem de indicação, o que diz muito sobre a qualidade do serviço. O Instagram, quando bem trabalhado, tem potencial de ampliar esse alcance para pessoas que ainda não fazem parte dessa rede.</div>
+    <div class="diag-highlight">A confiança já existe. A escala ainda não chegou.</div>
+  </div>
+
+  <div class="diag-item">
+    <div class="diag-icon">📱</div>
+    <div class="diag-title">Postagem sem estratégia definida</div>
+    <div class="diag-text">A frequência atual não segue uma lógica planejada. Dentro da Infoplay acontece muita coisa relevante todos os dias, e esse material tem potencial de virar conteúdo com função e consistência. O que falta é a estrutura para transformar o cotidiano da loja em publicações estratégicas.</div>
+    <div class="diag-highlight">O material existe. A estrutura é o que transforma isso em resultado.</div>
+  </div>
+
+</div>
+
+<div class="diagnostic-conclusion">
+  <p>A Infoplay tem o que a maioria das marcas leva anos para construir: serviço consistente, diferencial claro e visão de crescimento. O trabalho do conteúdo é <span>fazer tudo isso aparecer</span> para quem ainda não chegou até a loja.</p>
+</div>
+
+  </div>
+</section>
+
+<hr class="h-divider">
+<section>
+  <div class="container">
+    <div class="section-label">Estratégia</div>
+    <h2 class="section-title">O papel de cada<br>formato para a Infoplay</h2>
+    <p class="section-desc">O Instagram funciona como um caminho: alguém descobre a marca, se interessa pelo conteúdo, cria confiança e, a partir disso, toma a decisão de compra. Cada formato cumpre uma função específica dentro dessa sequência.</p>
+
+<div class="funnel-row">
+  <!-- REELS -->
+  <div class="funnel-item">
+    <div class="funnel-format f-reel">// REELS</div>
+    <div class="funnel-name">Atração</div>
+    <div class="funnel-role f-reel">Ampliar alcance e gerar descoberta</div>
+    <p class="funnel-desc">Os Reels colocam a Infoplay na frente de pessoas que ainda não a conhecem. Para a Geração Z, vídeo curto com identidade forte é o primeiro contato com uma marca.</p>
+    <ul class="funnel-items">
+      <li>Montagem de setups gamer</li>
+      <li>Unboxing e chegada de consoles</li>
+      <li>Antes e depois de assistências</li>
+      <li>Bastidores da loja e da equipe</li>
+      <li>Depoimentos de clientes satisfeitos</li>
+    </ul>
+  </div>
+
+  <!-- CARROSSEL -->
+  <div class="funnel-item">
+    <div class="funnel-format f-carousel">// CARROSSEL</div>
+    <div class="funnel-name">Conversão</div>
+    <div class="funnel-role f-carousel">Educar e quebrar objeções</div>
+    <p class="funnel-desc">Quando o Reels desperta interesse, o carrossel aprofunda: comunica os diferenciais, explica por que a Infoplay vale mais do que o menor preço da internet e prepara o cliente para a decisão de compra.</p>
+    <ul class="funnel-items">
+      <li>O diferencial das 48 horas de resolução</li>
+      <li>Por que comprar local vale a pena</li>
+      <li>Como funciona a assistência técnica</li>
+      <li>Guia para montar o setup ideal</li>
+      <li>Comparativos e dicas de produto</li>
+    </ul>
+  </div>
+
+  <!-- STORIES -->
+  <div class="funnel-item">
+    <div class="funnel-format f-stories">// STORIES</div>
+    <div class="funnel-name">Relacionamento</div>
+    <div class="funnel-role f-stories">Criar proximidade e confiança diária</div>
+    <p class="funnel-desc">Os stories mantêm a Infoplay presente no dia a dia do público, transformando seguidores em clientes recorrentes. Para a Geração Z, ver a rotina da loja cria o vínculo que antecede a compra.</p>
+    <ul class="funnel-items">
+      <li>Rotina da loja e da equipe</li>
+      <li>Produtos chegando em tempo real</li>
+      <li>Atendimentos e montagens acontecendo</li>
+      <li>Pais presenteando filhos com setups</li>
+      <li>Enquetes e interações com o público</li>
+    </ul>
+  </div>
+</div>
+
+<div class="funnel-arrow">
+  <span>Reels atrai</span> &nbsp;·&nbsp; <span>Carrossel convence</span> &nbsp;·&nbsp; <span>Stories aproxima</span> &nbsp;·&nbsp; Perfil converte
+</div>
+
+<div class="funnel-conclusion">
+  <p>
+    Volume de postagens não determina resultado. O que faz diferença é cada conteúdo ter uma função clara dentro do processo de compra do cliente.
+  </p>
+</div>
+
+  </div>
+</section>
+
+<hr class="h-divider">
+
+<!-- PACOTES -->
+
+<section>
+  <div class="container">
+    <div class="section-label">Formatos de Trabalho</div>
+    <h2 class="section-title">Três caminhos,<br>um destino</h2>
+    <p class="section-desc">Três formatos com níveis diferentes de profundidade estratégica e produção. O ponto de partida recomendado é o Base Essencial: entrega o suficiente para transformar a presença digital da Infoplay e abre caminho para evoluir conforme os resultados aparecem.</p>
+
+<div class="packages">
+
+  <!-- PKG 1 -->
+  <div class="pkg pkg1 featured">
+    <div class="pkg-top-bar"></div>
+    <div class="featured-tag">RECOMENDADO</div>
+    <div class="pkg-body">
+      <div class="pkg-number">FORMATO 01</div>
+      <div class="pkg-name">BASE ESSENCIAL</div>
+      <div class="pkg-tagline">O ponto de partida ideal para estruturar a presença digital da Infoplay com consistência e profissionalismo</div>
+
+      <div class="pkg-price">
+        <span class="from">INVESTIMENTO MENSAL</span>
+        <span class="amount">R$ 1.900</span>
+        <span class="period"> / mês</span>
+      </div>
+
+      <div class="pkg-section-title">// produção mensal</div>
+      <ul class="pkg-deliveries">
+        <li><span class="dot"></span><strong>6 conteúdos por mês</strong>, publicados de forma regular e planejada</li>
+        <li><span class="dot"></span>4 Reels produzidos com roteiro, captação e edição completa</li>
+        <li><span class="dot"></span>2 carrosséis com até 8 slides, da capa ao CTA</li>
+        <li><span class="dot"></span><strong>Prazo de entrega:</strong> 2 a 3 dias após a captação</li>
+      </ul>
+
+      <div class="pkg-section-title">// o que está incluído e por quê</div>
+      <ul class="pkg-deliveries">
+        <li><span class="dot"></span><strong>Planejamento mensal de conteúdo:</strong> antes de gravar qualquer coisa, definimos juntos os temas, os formatos e o que cada publicação precisa comunicar. Nada sai sem intenção.</li>
+        <li><span class="dot"></span><strong>Roteiro com narrativa objetiva:</strong> cada vídeo tem estrutura de abertura, desenvolvimento e fechamento, construído para que a mensagem seja clara e a fala flua naturalmente. O objetivo é comunicar com direção, sem improvisar na frente da câmera.</li>
+        <li><span class="dot"></span><strong>Direção de cena na captação:</strong> a diária vai além de gravar. São cuidados o enquadramento, a luz, a postura, o ritmo de fala e os ângulos. O resultado é um vídeo com aparência profissional porque foi conduzido dessa forma.</li>
+        <li><span class="dot"></span><strong>1 diária de captação (até 3h):</strong> todos os conteúdos do mês são gravados em um único dia, com organização prévia para aproveitar ao máximo o tempo disponível.</li>
+        <li><span class="dot"></span><strong>Edição completa com cortes, ritmo e legenda:</strong> o vídeo chega finalizado, com o ritmo ajustado para reter atenção e legenda para quem assiste sem som, que representa grande parte da audiência.</li>
+        <li><span class="dot"></span><strong>Padronização visual do feed:</strong> capas, cores e identidade aplicadas de forma coerente para que o perfil transmita profissionalismo à primeira visita.</li>
+        <li><span class="dot"></span><strong>Conteúdos entregues prontos para publicar:</strong> sem necessidade de edição adicional ou arquivos brutos para tratar. Cada entrega chega completa, no prazo combinado.</li>
+      </ul>
+
+      <div class="pkg-highlight">
+        ✦ Presença estruturada, conteúdo com intenção e identidade consistente
+      </div>
+
+      <div class="pkg-differentials">
+        <p>Perfil com identidade visual padronizada e consistente</p>
+        <p>Conteúdo planejado, roteirizado, gravado e editado</p>
+        <p>Frequência regular que constrói audiência ao longo do tempo</p>
+        <p>Base estruturada para evoluir para formatos mais completos</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PKG 2 -->
+  <div class="pkg pkg2">
+    <div class="pkg-top-bar"></div>
+    <div class="pkg-body">
+      <div class="pkg-number">FORMATO 02</div>
+      <div class="pkg-name">POSICIONAMENTO</div>
+      <div class="pkg-tagline">Direção estratégica e presença consistente para mudar a percepção da marca</div>
+
+      <div class="pkg-price">
+        <span class="from">INVESTIMENTO MENSAL</span>
+        <span class="amount">R$ 3.200</span>
+        <span class="period"> / mês</span>
+      </div>
+
+      <div class="pkg-section-title">// volume mensal de conteúdo</div>
+      <ul class="pkg-deliveries">
+        <li><span class="dot"></span><strong>10 conteúdos por mês</strong>, média de 2 a 3 por semana</li>
+        <li><span class="dot"></span>7 Reels com foco em retenção e alcance</li>
+        <li><span class="dot"></span>3 carrosséis, sendo 1 estratégico de posicionamento</li>
+        <li><span class="dot"></span><strong>Prazo de entrega:</strong> 3 a 5 dias após a captação</li>
+      </ul>
+
+      <div class="pkg-section-title">// o que está incluído e por quê</div>
+      <ul class="pkg-deliveries">
+        <li><span class="dot"></span><strong>Planejamento estratégico com pilares:</strong> autoridade, bastidores, prova social e produto — cada conteúdo com uma função definida dentro do mês.</li>
+        <li><span class="dot"></span><strong>Calendário mensal estruturado:</strong> visão completa do que será publicado, quando e com qual objetivo.</li>
+        <li><span class="dot"></span><strong>Roteiros com construção narrativa:</strong> além da estrutura de abertura, desenvolvimento e fechamento, os roteiros deste formato trabalham o argumento de forma mais elaborada, com contexto, conexão emocional com o público e direcionamento para a decisão de compra.</li>
+        <li><span class="dot"></span><strong>1 diária de captação (até 4h):</strong> mais tempo para gravar conteúdos variados, com direção de cena completa.</li>
+        <li><span class="dot"></span><strong>Edição com ritmo e identidade visual:</strong> corte dinâmico, transições, legenda e estética pensada para a Geração Z.</li>
+        <li><span class="dot"></span><strong>1 carrossel estratégico por mês:</strong> peça de conversão como "por que comprar na Infoplay" ou "como funciona a assistência técnica".</li>
+        <li><span class="dot"></span><strong>Acompanhamento mensal:</strong> análise do que funcionou para orientar a estratégia do mês seguinte.</li>
+      </ul>
+
+      <div class="pkg-highlight">
+        ✦ A percepção da Infoplay começa a mudar aqui
+      </div>
+
+      <div class="pkg-differentials">
+        <p>Comunicação orientada por pilares estratégicos</p>
+        <p>Audiência mais qualificada e alinhada ao produto</p>
+        <p>Menos comparação por preço, mais decisão por valor</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PKG 3 -->
+  <div class="pkg pkg3">
+    <div class="pkg-top-bar"></div>
+    <div class="pkg-body">
+      <div class="pkg-number">FORMATO 03</div>
+      <div class="pkg-name">CRESCIMENTO</div>
+      <div class="pkg-tagline">Construção de marca, autoridade e presença consolidada para a Geração Z</div>
+
+      <div class="pkg-price">
+        <span class="from">INVESTIMENTO MENSAL</span>
+        <span class="amount">R$ 4.200</span>
+        <span class="period"> / mês</span>
+      </div>
+
+      <div class="pkg-section-title">// volume mensal de conteúdo</div>
+      <ul class="pkg-deliveries">
+        <li><span class="dot"></span><strong>12 conteúdos por mês</strong>, 3 por semana</li>
+        <li><span class="dot"></span>8 Reels com produção refinada e storytelling</li>
+        <li><span class="dot"></span>4 carrosséis estratégicos de posicionamento</li>
+        <li><span class="dot"></span><strong>Prazo de entrega:</strong> 5 a 7 dias úteis após a captação</li>
+      </ul>
+
+      <div class="pkg-section-title">// o que está incluído e por quê</div>
+      <ul class="pkg-deliveries">
+        <li><span class="dot"></span><strong>Direção estratégica completa:</strong> posicionamento, linguagem e narrativa da marca definidos e aplicados em todo o conteúdo.</li>
+        <li><span class="dot"></span><strong>Linguagem Geração Z com autoridade:</strong> comunicação que conecta com o público jovem sem abrir mão da credibilidade técnica da loja.</li>
+        <li><span class="dot"></span><strong>Roteiros com storytelling:</strong> cada vídeo é construído em torno de uma história com tensão e resolução. Em vez de apenas apresentar um produto ou serviço, o roteiro cria uma situação real, um problema que o público reconhece, e conduz até a solução que a Infoplay oferece. Esse tipo de narrativa prende mais, retém mais tempo de visualização e gera mais identificação com a marca.</li>
+        <li><span class="dot"></span><strong>2 diárias de captação (até 4h cada):</strong> maior variedade de locações, ângulos e formatos ao longo do mês.</li>
+        <li><span class="dot"></span><strong>Edição refinada com estética de marca:</strong> visual consistente que posiciona a Infoplay acima das lojas concorrentes.</li>
+        <li><span class="dot"></span><strong>Conteúdos técnicos e bastidores:</strong> vídeos que evidenciam o conhecimento da equipe e reforçam a autoridade que a loja já possui no mercado.</li>
+        <li><span class="dot"></span><strong>Acompanhamento próximo e contínuo:</strong> ajustes frequentes com base nos dados, ao longo de todo o mês.</li>
+      </ul>
+
+      <div class="pkg-highlight">
+        ✦ O perfil passa a representar a marca, não apenas exibir produtos
+      </div>
+
+      <div class="pkg-differentials">
+        <p>Identidade visual e linguagem coerentes em todos os formatos</p>
+        <p>Conteúdo técnico que posiciona a equipe como especialista</p>
+        <p>Perfil estruturado como canal de conversão contínua</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- SUMMARY TABLE -->
+<div style="margin-top: 60px;">
+  <div class="section-label">Comparativo Rápido</div>
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th>FORMATO</th>
+        <th>CONTEÚDOS/MÊS</th>
+        <th>CAPTAÇÃO</th>
+        <th>POSICIONAMENTO</th>
+        <th>INVESTIMENTO</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="t-pkg t-pkg1">BASE ESSENCIAL</span></td>
+        <td>6 conteúdos</td>
+        <td>1 diária (3h)</td>
+        <td>Organização</td>
+        <td class="t-price" style="color:#cc2222">R$ 1.900/mês</td>
+      </tr>
+      <tr>
+        <td><span class="t-pkg t-pkg2">POSICIONAMENTO</span></td>
+        <td>10 conteúdos</td>
+        <td>1 diária (4h)</td>
+        <td>Crescimento</td>
+        <td class="t-price" style="color:#ff3333">R$ 3.200/mês</td>
+      </tr>
+      <tr>
+        <td><span class="t-pkg t-pkg3">CRESCIMENTO</span></td>
+        <td>12 conteúdos</td>
+        <td>2 diárias (4h)</td>
+        <td>Autoridade</td>
+        <td class="t-price" style="color:#ff6666">R$ 4.200/mês</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </div>
+</section>
+
+<hr class="h-divider">
+
+<!-- MODULAR -->
+
+<section>
+  <div class="container">
+    <div class="section-label">Serviços Avulsos</div>
+    <h2 class="section-title">Prefere começar<br>por uma parte?</h2>
+    <p class="section-desc">Para quem quer conhecer o trabalho antes de fechar um formato mensal, ou precisa de um serviço pontual sem a estrutura completa.</p>
+
+<div class="modular-grid">
+
+  <div class="modular-item">
+    <div class="modular-header">
+      <div class="modular-icon">🎬</div>
+      <div>
+        <div class="modular-name">Captação + Edição</div>
+        <div class="modular-price">R$ 350 <span>por vídeo</span></div>
+      </div>
+    </div>
+    <div class="modular-desc">Inclui roteirização, captação em diária de até 3h e edição completa do Reels. O vídeo chega pronto para publicar.</div>
+    <div class="modular-deadline">⏱ Entrega em 2 a 3 dias após a captação</div>
+    <ul class="modular-list">
+      <li>Captação conduzida e dirigida no local</li>
+      <li>Edição com cortes, ritmo e legenda</li>
+      <li>Uma rodada de ajuste incluída</li>
+    </ul>
+  </div>
+
+  <div class="modular-item">
+    <div class="modular-header">
+      <div class="modular-icon">🖼️</div>
+      <div>
+        <div class="modular-name">Carrossel Completo</div>
+        <div class="modular-price">R$ 250 <span>por peça</span></div>
+      </div>
+    </div>
+    <div class="modular-desc">Carrossel completo, da capa ao CTA, com até 8 slides. Pauta definida, texto elaborado e diagramação dentro da identidade visual da Infoplay.</div>
+    <div class="modular-deadline">⏱ Entrega em até 3 dias úteis</div>
+    <ul class="modular-list">
+      <li>Pauta alinhada ao objetivo do conteúdo</li>
+      <li>Texto e estrutura de todos os slides</li>
+      <li>Capa, desenvolvimento e CTA final</li>
+      <li>Uma rodada de ajuste incluída</li>
+    </ul>
+  </div>
+
+  <div class="modular-item modular-featured">
+    <div class="modular-header">
+      <div class="modular-icon">📦</div>
+      <div>
+        <div class="modular-name">Kit Entrada</div>
+        <div class="modular-price">R$ 650 <span>/ mês</span></div>
+      </div>
+    </div>
+    <div class="modular-desc">Dois vídeos por mês para quem quer começar a ter presença sem a estrutura completa de um formato mensal. Inclui roteiro, captação e edição, mas sem planejamento estratégico ou calendário editorial.</div>
+    <div class="modular-deadline">⏱ Entregas em 2 a 3 dias após a captação</div>
+    <ul class="modular-list">
+      <li>2 Reels por mês</li>
+      <li>1 diária de captação (até 2h)</li>
+      <li>Roteiro simples, edição e legenda</li>
+      <li>Sem planejamento mensal ou acompanhamento</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="modular-note">
+  Os serviços avulsos não incluem planejamento estratégico, calendário editorial nem acompanhamento de resultados. Esses elementos fazem parte dos formatos mensais.
+</div>
+
+  </div>
+</section>
+
+<hr class="h-divider">
+
+<!-- PROCESSO -->
+
+<section>
+  <div class="container">
+    <div class="section-label">Como funciona na prática</div>
+    <h2 class="section-title">Do briefing à<br>publicação</h2>
+    <p class="section-desc">Um processo claro evita retrabalho e garante que os conteúdos cheguem no prazo com a qualidade esperada.</p>
+
+<div class="process-steps">
+
+  <div class="process-step">
+    <div class="step-number">01</div>
+    <div class="step-content">
+      <div class="step-title">Planejamento</div>
+      <div class="step-deadline">Até o dia 25 do mês anterior</div>
+      <div class="step-desc">O calendário editorial do mês seguinte é entregue com temas, formatos e datas de captação definidos. A aprovação acontece antes de qualquer produção começar.</div>
+    </div>
+  </div>
+
+  <div class="process-step">
+    <div class="step-number">02</div>
+    <div class="step-content">
+      <div class="step-title">Roteirização</div>
+      <div class="step-deadline">Até 2 dias antes da diária</div>
+      <div class="step-desc">Os roteiros chegam antes da gravação para que a equipe da Infoplay já saiba o que vai ser dito. O objetivo é aproveitar ao máximo o tempo de captação.</div>
+    </div>
+  </div>
+
+  <div class="process-step">
+    <div class="step-number">03</div>
+    <div class="step-content">
+      <div class="step-title">Captação</div>
+      <div class="step-deadline">Conforme calendário aprovado</div>
+      <div class="step-desc">A diária é conduzida com direção de cena, enquadramentos e orientação de fala. Todos os conteúdos do mês são gravados no mesmo dia para otimizar o tempo da equipe.</div>
+    </div>
+  </div>
+
+  <div class="process-step">
+    <div class="step-number">04</div>
+    <div class="step-content">
+      <div class="step-title">Edição e entrega</div>
+      <div class="step-deadline">Variável conforme o formato contratado</div>
+      <div class="step-desc">Os vídeos editados são enviados para aprovação dentro do prazo correspondente ao formato: 2 a 3 dias para o Base Essencial, 3 a 5 dias para o Posicionamento e 5 a 7 dias úteis para o Crescimento. A diferença reflete o nível de elaboração da edição e do roteiro em cada caso. Cada conteúdo inclui uma rodada de ajuste antes da versão final.</div>
+    </div>
+  </div>
+
+  <div class="process-step">
+    <div class="step-number">05</div>
+    <div class="step-content">
+      <div class="step-title">Acompanhamento</div>
+      <div class="step-deadline">Ao longo do mês</div>
+      <div class="step-desc">Nos formatos Posicionamento e Crescimento, os resultados são analisados mensalmente e o conteúdo é ajustado com base no que está funcionando.</div>
+    </div>
+  </div>
+
+</div>
+
+  </div>
+</section>
+
+<hr class="h-divider">
+
+<!-- LIMITES -->
+
+<section>
+  <div class="container">
+    <div class="section-label">Transparência</div>
+    <h2 class="section-title">Condições e<br>limites do trabalho</h2>
+    <p class="section-desc">Uma parceria funciona bem quando as expectativas estão alinhadas desde o início. Estes são os termos que orientam a execução de qualquer formato contratado.</p>
+
+<div class="limits-grid">
+  <div class="limit-item">
+    <div class="limit-icon">📦</div>
+    <div>
+      <div class="limit-title">Volume de conteúdo fixo</div>
+      <div class="limit-desc">A quantidade de conteúdos por mês segue o formato contratado. Produções adicionais são orçadas separadamente.</div>
+    </div>
+  </div>
+  <div class="limit-item">
+    <div class="limit-icon">📅</div>
+    <div>
+      <div class="limit-title">Captação dentro da diária</div>
+      <div class="limit-desc">As gravações acontecem na diária prevista no formato contratado. Dias adicionais de captação têm custo específico.</div>
+    </div>
+  </div>
+  <div class="limit-item">
+    <div class="limit-icon">✏️</div>
+    <div>
+      <div class="limit-title">Uma rodada de revisão</div>
+      <div class="limit-desc">Cada entrega inclui uma rodada de ajuste. Solicitações além desse limite são cobradas conforme o volume de alteração.</div>
+    </div>
+  </div>
+  <div class="limit-item">
+    <div class="limit-icon">🗓️</div>
+    <div>
+      <div class="limit-title">Demandas fora do planejamento</div>
+      <div class="limit-desc">Conteúdos solicitados fora do calendário mensal aprovado são tratados como demanda avulsa, sem impacto no cronograma principal.</div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<hr class="h-divider">
+
+<!-- CLOSING -->
+
+<section>
+  <div class="container">
+    <div class="closing">
+      <div class="closing-quote">
+        A Infoplay já tem o que a maioria das marcas leva anos para construir: confiança, diferencial claro e visão de crescimento. O que o digital precisa fazer agora é comunicar isso para quem ainda não chegou até a loja. Estes três formatos foram estruturados para que a escolha faça sentido para o momento atual, com a clareza de que o objetivo é o mesmo em qualquer um deles: construir uma presença à altura do que a Infoplay já representa.
+      </div>
+      <div class="closing-divider"></div>
+      <div class="closing-final">
+        A decisão é de vocês. O comprometimento com o resultado é nosso.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="container">
+    <div class="footer-brand">INFOPLAY</div>
+    <p>Proposta Comercial · Marketing Estratégico · 2026</p>
+    <p style="margin-top:10px; font-size:13px; color:#f5f5f5; letter-spacing:1px;">Apresentado por <strong>Patricia Duarte</strong></p>
+    <p style="margin-top:6px;">@rivelistudio &nbsp;·&nbsp; @patriccianunez</p>
+  </div>
+</footer>
+
+</body>
+</html>
