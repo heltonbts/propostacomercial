@@ -567,24 +567,6 @@ letter-spacing: 2px;
 .container { padding: 0 20px; }
 }
 
-/* ── SCAN LINE ── */
-@keyframes scanLine {
-  0%   { top: -4px; opacity: 0; }
-  5%   { opacity: 1; }
-  95%  { opacity: 1; }
-  100% { top: 100vh; opacity: 0; }
-}
-.scan-line {
-  position: fixed;
-  left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent 0%, rgba(255,30,30,0.5) 30%, rgba(255,80,80,0.8) 50%, rgba(255,30,30,0.5) 70%, transparent 100%);
-  box-shadow: 0 0 12px rgba(255,30,30,0.4), 0 0 30px rgba(255,30,30,0.15);
-  z-index: 0;
-  pointer-events: none;
-  animation: scanLine 10s linear infinite;
-}
-
 /* ── FORMATO B FEATURED ── */
 .fmt-b.featured {
   border-color: rgba(255,30,30,0.35);
@@ -633,8 +615,6 @@ letter-spacing: 2px;
 
 </head>
 <body>
-
-<div class="scan-line"></div>
 
 <!-- NAV TABS -->
 <nav style="
